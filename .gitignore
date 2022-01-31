@@ -1,7 +1,12 @@
 # Compiled class file
+<<<<<<< HEAD
+123
+=======
 
+>>>>>>> a081d440b6f68a7e1582af20e3c7e97928436b02
 
 *.class
+
 
 # Log file
 *.log
