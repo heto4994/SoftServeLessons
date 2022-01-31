@@ -1,0 +1,101 @@
+package zadachki.knyzhka;
+
+import alishev.lessons.While;
+
+import java.util.*;
+import java.util.stream.IntStream;
+
+public class Chapter1 {
+    public static void main(String[] args) {
+        System.out.println("Парні\n" + Arrays.toString(task1(SortType.TYPE1)));
+        System.out.println("Не парні\n" + Arrays.toString(task1(SortType.TYPE2)));
+        System.out.println("YURA");
+        for(int k=100;k<=999;k++){
+            if(k%111!=0){
+                System.out.println(k);
+            }
+        }
+
+        System.out.println("OLEH");
+
+        List<Integer> list =new ArrayList<>();
+        IntStream.range(100,999).filter(val->val%111!=0).forEach(list::add);
+
+        System.out.println(list.toString());
+    }
+
+
+    //Четные и нечетные числа введені з консолі
+    static int[] task1(SortType type) {
+        Scanner sc1 = new Scanner(System.in);
+        int i = 0;
+        int[] arr = new int[5];
+
+        while (i < 5) {
+            System.out.println("Please input your number: ");
+            String s = sc1.nextLine();
+            int i1 = Integer.parseInt(s);
+            arr[i] = i1;
+
+            i++;
+        }
+
+        //Знайти найбільше значення
+
+int max=arr[0];
+        for (int j=1;j<arr.length;j++){
+            if(max<arr[j]){
+                max=arr[j];
+            }
+
+        }
+        System.out.println("Max value: "+ max);
+
+        // type1 ->  парні
+        // type2 ->  не парні
+
+        int[] arrType1 = null;
+
+        if (type.equals(SortType.TYPE1)) {
+            int counter = 0;
+            for (Integer number : arr) {
+                if (number % 2 == 0) {
+                    counter = counter + 1;
+                }
+            }
+            arrType1 = new int[counter];
+
+            int counter2 = 0;
+            for (int a = 0; a < arr.length; a++) {
+                if (arr[a] % 2 == 0) {
+                    arrType1[counter2] = arr[a];
+                    counter2++;
+                }
+            }
+        } else {
+            int counter = 0;
+            for (Integer number : arr) {
+                if (number % 2 != 0) {
+                    counter = counter + 1;
+                }
+            }
+            arrType1 = new int[counter];
+
+            int counter2 = 0;
+            for (int a = 0; a < arr.length; a++) {
+                if (arr[a] % 2 != 0) {
+                    arrType1[counter2] = arr[a];
+                    counter2++;
+                }
+            }
+        }
+
+
+        System.out.println();
+        return arrType1;
+    }
+
+    enum SortType {
+        TYPE1, TYPE2;
+    }
+}
